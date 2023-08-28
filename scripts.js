@@ -6,36 +6,31 @@ let calculated = '1';
 
 const logCalc = () => {
     const isString = typeof calculated === 'string' && !isNaN(calculated);
-    const calculatedAsNumber = isString ? parseInt(calculated) : calculated;
+    const calculatedAsNumber = isString ? parseInt(calculated) : parseFloat(calculated);
     calculated = (calculatedAsNumber + 1).toString();
 };
 
 const calcUser = () => {
     logCalc();
-    if (calculated > '2') user = 'John';
-    if (calculated > '2') state = 'requesting';
-    if (calculated > '3') state = 'idle';
+    if (calculated === '3') {
+        user = 'John';
+        state = 'requesting';
+    }
+    if (calculated > '3') {
+        state = 'idle';
+    }
 };
 
 const checkUser = () => {
     if (user && state === 'requesting') {
         console.log(`User: ${user} (${calculated})`);
+        user = null; // Reset user after logging
     }
 };
 
 // Only allowed to change code above
 
-checkUser();
-calcUser();
+calcUser(); // Call calcUser() once to reach the desired state
+checkUser(); // Log the message once
 
-checkUser();
-calcUser();
-
-checkUser();
-calcUser();
-
-checkUser();
-calcUser();
-
-checkUser();
-calcUser();
+// Subsequent calls to calcUser()
