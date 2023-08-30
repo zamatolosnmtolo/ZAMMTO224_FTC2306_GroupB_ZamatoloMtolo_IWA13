@@ -7,7 +7,7 @@ let calculated = '1';
 const logCalc = () => {
   const isString = typeof calculated === 'string' && !isNaN(calculated);
   const calculatedAsNumber = isString ? parseFloat(calculated) : parseFloat(calculated);
-  calculated = isString ? (calculatedAsNumber + 1).toString() : (calculatedAsNumber + 1).toString();
+  calculated = (calculatedAsNumber + 1).toString(); // Convert the calculated value back to a string
 };
 
 const calcUser = () => {
